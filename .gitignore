@@ -15,10 +15,26 @@ out/
 *.iws
 *.ipr
 
-# ===== Eclipse / VS Code (just in case) =====
+# ===== Eclipse =====
+.apt_generated
 .classpath
+.factorypath
 .project
 .settings/
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# ===== NetBeans =====
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ===== VS Code =====
 .vscode/
 
 # ===== OS =====
