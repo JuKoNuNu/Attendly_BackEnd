@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: welabs-monitoring-v6
+  datasource:
+    url: jdbc:mysql://localhost:3306/welabs_monitoring?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: ${DB_PASSWORD:12345678}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    open-in-view: false
+    show-sql: true
+
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    com.welabs.monitoring: DEBUG
+    org.hibernate.SQL: DEBUG
+
+notification:
+  threshold-sec: 300        # 5분. 테스트 시 30
+  spoof-threshold: 70       # 위장 점수 임계값. 이 이상이면 운영자 Teams 알림
+  teams:
+    webhook-url: ${TEAMS_WEBHOOK_URL:}   # 비어있으면 발송 skip
+
+monitoring:
+  retention-days: 30        # monitoring_event TTL (일). 이보다 오래된 row 는 매일 03:00 삭제
