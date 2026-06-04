@@ -93,7 +93,7 @@ public class DashboardService {
             sessionId = hb.getSessionId();
 
             if (ongoing != null) {
-     0           long elapsedSec = Duration.between(ongoing.getStartedAt(), now).toSeconds();
+                long elapsedSec = Duration.between(ongoing.getStartedAt(), now).toSeconds();
                 boolean isLong = Boolean.TRUE.equals(ongoing.getIsLong()) || elapsedSec >= ABSENCE_LONG_SEC;
                 currentState = isLong ? "AWAY_LONG" : "AWAY_BRIEF";
             } else {
